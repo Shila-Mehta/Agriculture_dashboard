@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Management Dashboard</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <!-- Logo/Brand -->
+                    <div class="sidebar-header text-center py-4">
+                        <h4 class="text-white">
+                            <i class="fas fa-tractor me-2"></i>AgriDash
+                        </h4>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="user-profile text-center mb-4">
+                        <img src="assets/images/avatar.png" alt="User Avatar" class="rounded-circle mb-2" width="80" height="80">
+                        <h6 class="text-white mb-1">John Farmer</h6>
+                        <p class="text-muted">Farm Manager</p>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-page="dashboard">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="crops">
+                                <i class="fas fa-seedling me-2"></i>
+                                Crops
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="farmers">
+                                <i class="fas fa-users me-2"></i>
+                                Farmers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="reports">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="settings">
+                                <i class="fas fa-cog me-2"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Sidebar Toggle Button (Mobile) -->
+                    <div class="sidebar-toggle-mobile d-md-none text-center mt-4">
+                        <button class="btn btn-outline-light" id="sidebarToggleMobile">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Top Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+                    <div class="container-fluid">
+                        <!-- Page Title (Dynamic) -->
+                        <h2 class="navbar-brand mb-0 h1" id="pageTitle">Dashboard</h2>
+                        
+                        <!-- Top Navbar Items -->
+                        <div class="d-flex align-items-center">
+                            <!-- Sidebar Toggle (Desktop) -->
+                            <button class="btn btn-outline-secondary me-3 d-none d-md-block" id="sidebarToggle">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            
+                            <!-- Notifications -->
+                            <div class="dropdown me-3">
+                                <button class="btn btn-light position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationBadge">
+                                        3
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                                    <li><a class="dropdown-item" href="#">New crop added</a></li>
+                                    <li><a class="dropdown-item" href="#">Harvest scheduled</a></li>
+                                    <li><a class="dropdown-item" href="#">System update required</a></li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Logout -->
+                            <button class="btn btn-outline-danger" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Page Content (Dynamic) -->
+                <div id="pageContent">
+                    <!-- Content will be loaded here dynamically -->
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Add/Edit Crop Modal -->
+    <div class="modal fade" id="cropModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Add New Crop</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="cropForm">
+                        <input type="hidden" id="cropId">
+                        <div class="mb-3">
+                            <label for="cropName" class="form-label">Crop Name</label>
+                            <input type="text" class="form-control" id="cropName" required>
+                            <div class="invalid-feedback">Please enter crop name</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cropType" class="form-label">Crop Type</label>
+                            <select class="form-control" id="cropType" required>
+                                <option value="">Select Type</option>
+                                <option value="Grain">Grain</option>
+                                <option value="Vegetable">Vegetable</option>
+                                <option value="Fruit">Fruit</option>
+                                <option value="Cash Crop">Cash Crop</option>
+                            </select>
+                            <div class="invalid-feedback">Please select crop type</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="plantingDate" class="form-label">Planting Date</label>
+                            <input type="date" class="form-control" id="plantingDate" required>
+                            <div class="invalid-feedback">Please select planting date</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harvestDate" class="form-label">Expected Harvest Date</label>
+                            <input type="date" class="form-control" id="harvestDate" required>
+                            <div class="invalid-feedback">Please select harvest date</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="area" class="form-label">Area (acres)</label>
+                            <input type="number" class="form-control" id="area" min="1" required>
+                            <div class="invalid-feedback">Please enter valid area</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" id="status" required>
+                                <option value="Planted">Planted</option>
+                                <option value="Growing">Growing</option>
+                                <option value="Ready">Ready for Harvest</option>
+                                <option value="Harvested">Harvested</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveCropBtn">Save Crop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this crop? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS Files -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/crops.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
