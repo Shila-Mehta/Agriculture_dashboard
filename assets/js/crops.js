@@ -1,4 +1,3 @@
-// Crops Management Functions
 let cropToDelete = null;
 
 function loadCropsTable(cropsData = getCrops()) {
@@ -79,11 +78,9 @@ function saveCrop() {
     
     addCrop(cropData);
     
-    // Close modal
     const modal = bootstrap.Modal.getInstance(document.getElementById('addCropModal'));
     modal.hide();
     
-    // Refresh table
     loadCropsTable();
     
     alert('Crop added successfully!');
@@ -93,7 +90,6 @@ function editCrop(id) {
     const crop = getCrops().find(c => c.id === id);
     if (!crop) return;
     
-    // Fill modal with crop data
     document.querySelector('#addCropModal .modal-title').textContent = 'Edit Crop';
     document.getElementById('cropName').value = crop.name;
     document.getElementById('cropType').value = crop.type;
@@ -101,7 +97,6 @@ function editCrop(id) {
     document.getElementById('area').value = crop.area;
     document.getElementById('status').value = crop.status;
     
-    // Show modal
     const modal = new bootstrap.Modal(document.getElementById('addCropModal'));
     modal.show();
 }

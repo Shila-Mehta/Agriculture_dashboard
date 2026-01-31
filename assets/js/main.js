@@ -1,4 +1,3 @@
-// Main Application Initialization
 
 class AgricultureDashboard {
     constructor() {
@@ -6,26 +5,20 @@ class AgricultureDashboard {
     }
 
     initializeApp() {
-        // Check if all required elements exist
         if (!this.checkRequiredElements()) {
             console.error('Required elements not found. Please check your HTML structure.');
             return;
         }
 
-        // Initialize managers
         this.sidebarManager = initializeSidebarManager();
         this.cropsManager = initializeCropsManager();
         
-        // Set initial page
         this.loadInitialPage();
         
-        // Initialize charts
         initializeCharts();
         
-        // Set up global event listeners
         this.setupGlobalListeners();
         
-        // Update notification badge
         this.updateNotificationBadge();
         
         console.log('Agriculture Dashboard initialized successfully!');
@@ -37,21 +30,17 @@ class AgricultureDashboard {
     }
 
     loadInitialPage() {
-        // Load dashboard by default
         this.sidebarManager.navigateTo('dashboard');
     }
 
     setupGlobalListeners() {
-        // Add any global event listeners here
         
-        // Example: Update stats when crops are modified
         document.addEventListener('cropsUpdated', () => {
             this.updateDashboardStats();
         });
     }
 
     updateDashboardStats() {
-        // Update statistics on dashboard
         const stats = {
             totalCrops: getCrops().length,
             totalFarms: dashboardData.statistics.totalFarms,
@@ -59,7 +48,6 @@ class AgricultureDashboard {
             totalYield: getCrops().reduce((sum, crop) => sum + (crop.yield || 0), 0)
         };
         
-        // Update DOM if on dashboard
         if (document.getElementById('pageTitle').textContent === 'Dashboard') {
             document.getElementById('totalCrops').textContent = stats.totalCrops;
             document.getElementById('totalYield').textContent = stats.totalYield.toLocaleString() + ' tons';
@@ -75,7 +63,6 @@ class AgricultureDashboard {
         }
     }
 
-    // Utility function to show loading
     showLoading(show = true) {
         const loader = document.getElementById('loadingOverlay');
         if (show && !loader) {
@@ -101,12 +88,11 @@ class AgricultureDashboard {
     }
 }
 
-// Initialize the application when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', () => {
     window.agricultureDashboard = new AgricultureDashboard();
 });
 
-// Export for debugging
 window.app = {
     dashboard: null,
     cropsManager: null,

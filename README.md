@@ -1,6 +1,6 @@
 # Agriculture Dashboard
 
-A simple agriculture management dashboard built with HTML, CSS, Bootstrap, and JavaScript.
+A  agriculture management dashboard built with HTML, CSS, Bootstrap, and JavaScript.
 
 ## Features
 - Dashboard with 4 stat cards

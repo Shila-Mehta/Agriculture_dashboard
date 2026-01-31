@@ -1,4 +1,3 @@
-// Sidebar and Navigation Management
 
 class SidebarManager {
     constructor() {
@@ -8,13 +7,11 @@ class SidebarManager {
     }
 
     initEventListeners() {
-        // Desktop sidebar toggle
         const sidebarToggle = document.getElementById('sidebarToggle');
         if (sidebarToggle) {
             sidebarToggle.addEventListener('click', () => this.toggleSidebar());
         }
 
-        // Mobile sidebar toggle
         const sidebarToggleMobile = document.getElementById('sidebarToggleMobile');
         if (sidebarToggleMobile) {
             sidebarToggleMobile.addEventListener('click', () => this.toggleMobileSidebar());
@@ -26,7 +23,6 @@ class SidebarManager {
             logoutBtn.addEventListener('click', () => this.logout());
         }
 
-        // Close mobile sidebar when clicking on overlay
         document.addEventListener('click', (e) => {
             const overlay = document.querySelector('.sidebar-overlay');
             if (overlay && overlay.contains(e.target)) {
@@ -34,12 +30,10 @@ class SidebarManager {
             }
         });
 
-        // Handle window resize
         window.addEventListener('resize', () => this.handleResize());
     }
 
     setupNavigation() {
-        // Navigation links
         document.querySelectorAll('#sidebar .nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -58,14 +52,11 @@ class SidebarManager {
     }
 
     navigateTo(page) {
-        // Update page title
         const pageTitle = document.getElementById('pageTitle');
         const pageContent = document.getElementById('pageContent');
         
-        // Show loading
         pageContent.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
         
-        // Simulate loading delay
         setTimeout(() => {
             switch(page) {
                 case 'dashboard':
@@ -204,7 +195,6 @@ class SidebarManager {
             </div>
         `;
         
-        // Initialize charts
         initializeCharts();
     }
 
@@ -284,18 +274,15 @@ class SidebarManager {
             </div>
         `;
         
-        // Initialize crops manager and render table
         if (!cropsManager) {
             initializeCropsManager();
         }
         cropsManager.renderCropsTable();
         
-        // Add event listener for add crop button
         document.getElementById('addCropBtn').addEventListener('click', () => {
             cropsManager.showAddModal();
         });
         
-        // Update counts
         this.updateCropCounts();
     }
 
@@ -539,7 +526,6 @@ class SidebarManager {
         const sidebar = document.getElementById('sidebar');
         sidebar.classList.toggle('show');
         
-        // Create or remove overlay
         let overlay = document.querySelector('.sidebar-overlay');
         if (sidebar.classList.contains('show')) {
             if (!overlay) {
@@ -584,7 +570,6 @@ class SidebarManager {
     }
 
     handleResize() {
-        // Auto-close mobile sidebar on resize to desktop
         if (window.innerWidth >= 768) {
             this.closeMobileSidebar();
             document.getElementById('sidebar').classList.remove('collapsed');
@@ -593,7 +578,7 @@ class SidebarManager {
 
     logout() {
         if (confirm('Are you sure you want to logout?')) {
-            // Show logout message
+
             const pageContent = document.getElementById('pageContent');
             pageContent.innerHTML = `
                 <div class="container-fluid py-4">
@@ -622,7 +607,6 @@ class SidebarManager {
     }
 }
 
-// Initialize sidebar manager
 let sidebarManager;
 
 function initializeSidebarManager() {

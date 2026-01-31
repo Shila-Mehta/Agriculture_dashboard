@@ -241,14 +241,12 @@
             }
         }
         
-        // Draw additional chart for reports page
         document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.getElementById('reportChart1');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
                 const data = [1500, 2200, 1800, 2500, 3000, 2800];
                 
-                // Draw line chart for reports
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 // Draw grid

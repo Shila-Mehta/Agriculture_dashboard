@@ -1,4 +1,3 @@
-// Static Data for Agriculture Dashboard
 const dashboardData = {
     statistics: {
         totalCrops: 24,
@@ -53,7 +52,6 @@ const dashboardData = {
     ]
 };
 
-// Data management
 let crops = [...dashboardData.crops];
 
 function getCrops() {

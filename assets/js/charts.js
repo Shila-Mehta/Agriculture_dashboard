@@ -1,4 +1,3 @@
-// Simple Chart Functions
 function drawBarChart() {
     const canvas = document.getElementById('barChart');
     if (!canvas) return;
@@ -9,10 +8,9 @@ function drawBarChart() {
     const width = canvas.width;
     const height = canvas.height;
     
-    // Clear
     ctx.clearRect(0, 0, width, height);
     
-    // Draw bars
+    //  At  this  we Draw bars
     const barWidth = (width - 80) / data.length;
     
     for (let i = 0; i < data.length; i++) {
@@ -43,12 +41,11 @@ function drawPieChart() {
     const centerY = canvas.height / 2;
     const radius = Math.min(centerX, centerY) - 20;
     
-    // Clear
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     let startAngle = 0;
     
-    // Draw slices
     for (let i = 0; i < data.length; i++) {
         const sliceAngle = (data[i].percentage / 100) * 2 * Math.PI;
         const endAngle = startAngle + sliceAngle;
@@ -74,10 +71,8 @@ function drawLineChart() {
     const width = canvas.width;
     const height = canvas.height;
     
-    // Clear
     ctx.clearRect(0, 0, width, height);
     
-    // Draw grid
     ctx.strokeStyle = '#eee';
     for (let i = 0; i <= 5; i++) {
         const y = height - (i * height / 5);
@@ -87,7 +82,6 @@ function drawLineChart() {
         ctx.stroke();
     }
     
-    // Draw line
     ctx.beginPath();
     ctx.strokeStyle = '#4CAF50';
     ctx.lineWidth = 3;
@@ -104,7 +98,6 @@ function drawLineChart() {
     }
     ctx.stroke();
     
-    // Draw points
     for (let i = 0; i < data.length; i++) {
         const x = 40 + i * ((width - 60) / (data.length - 1));
         const y = height - 20 - (data[i] / max) * (height - 60);
