@@ -39,3 +39,24 @@ A professional Agriculture Management Dashboard built with HTML5, CSS3, Bootstra
 - **Canvas API** - Chart rendering
 
 ## Project Structure
+
+```
+└── 📁Agriculture_Dashboard
+    └── 📁assets
+        └── 📁css
+            ├── style.css
+        └── 📁images
+            ├── avatar.png
+        └── 📁js
+            ├── charts.js
+            ├── crops.js
+            ├── data.js
+            ├── main.js
+            ├── sidebar.js
+    ├── crops.html
+    ├── farmers.html
+    ├── index.html
+    ├── README.md
+    ├── reports.html
+    └── settings.html
+```
