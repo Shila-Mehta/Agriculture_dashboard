@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Agriculture Dashboard</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="position-sticky pt-3">
+                    <!-- Logo/Brand -->
+                    <div class="sidebar-header text-center py-4">
+                        <h4 class="text-white">
+                            <i class="fas fa-tractor me-2"></i>AgriDash
+                        </h4>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="user-profile text-center mb-4">
+                        <img src="assets/images/avatar.png" alt="User Avatar" class="rounded-circle mb-2" width="80" height="80">
+                        <h6 class="text-white mb-1">John Farmer</h6>
+                        <p class="text-muted">Farm Manager</p>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="crops.html">
+                                <i class="fas fa-seedling me-2"></i>
+                                Crops
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="farmers.html">
+                                <i class="fas fa-users me-2"></i>
+                                Farmers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="settings.html">
+                                <i class="fas fa-cog me-2"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Top Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+                    <div class="container-fluid">
+                        <!-- Page Title -->
+                        <h2 class="navbar-brand mb-0 h1">Settings</h2>
+                        
+                        <!-- Top Navbar Items -->
+                        <div class="d-flex align-items-center">
+                            <!-- Notifications -->
+                            <div class="dropdown me-3">
+                                <button class="btn btn-light position-relative" type="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                                    <li><a class="dropdown-item" href="#">Settings updated</a></li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Logout -->
+                            <button class="btn btn-outline-danger" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Settings Content -->
+                <div class="py-4">
+                    <h4 class="mb-4">Settings</h4>
+                    
+                    <div class="row">
+                        <!-- Profile Settings -->
+                        <div class="col-lg-8 mb-4">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Profile Settings</h5>
+                                    <form>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" value="John Farmer">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" value="john@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Role</label>
+                                            <input type="text" class="form-control" value="Farm Manager" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" value="+1-555-0100">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Notification Settings -->
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Notification Preferences</h5>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notif1" checked>
+                                        <label class="form-check-label" for="notif1">
+                                            Crop status updates
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notif2" checked>
+                                        <label class="form-check-label" for="notif2">
+                                            Harvest alerts
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notif3">
+                                        <label class="form-check-label" for="notif3">
+                                            Weather warnings
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notif4" checked>
+                                        <label class="form-check-label" for="notif4">
+                                            System notifications
+                                        </label>
+                                    </div>
+                                    <button class="btn btn-primary">Save Preferences</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- System Information -->
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">System Information</h5>
+                                    <div class="mb-3">
+                                        <small class="text-muted">Version</small>
+                                        <p class="mb-0">v2.1.0</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <small class="text-muted">Last Updated</small>
+                                        <p class="mb-0">January 15, 2025</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <small class="text-muted">Data Usage</small>
+                                        <div class="progress mt-2" style="height: 10px;">
+                                            <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Account Actions -->
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Account Actions</h5>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-outline-primary">
+                                            <i class="fas fa-key me-2"></i>Change Password
+                                        </button>
+                                        <button class="btn btn-outline-warning">
+                                            <i class="fas fa-download me-2"></i>Export All Data
+                                        </button>
+                                        <button class="btn btn-outline-danger" onclick="clearData()">
+                                            <i class="fas fa-trash me-2"></i>Clear All Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                alert('Logged out successfully!');
+            }
+        }
+        
+        function clearData() {
+            if (confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+                alert('All data has been cleared!');
+            }
+        }
+    </script>
+</body>
+</html>

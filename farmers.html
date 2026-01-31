@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers - Agriculture Dashboard</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="position-sticky pt-3">
+                    <!-- Logo/Brand -->
+                    <div class="sidebar-header text-center py-4">
+                        <h4 class="text-white">
+                            <i class="fas fa-tractor me-2"></i>AgriDash
+                        </h4>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="user-profile text-center mb-4">
+                        <img src="assets/images/avatar.png" alt="User Avatar" class="rounded-circle mb-2" width="80" height="80">
+                        <h6 class="text-white mb-1">John Farmer</h6>
+                        <p class="text-muted">Farm Manager</p>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="crops.html">
+                                <i class="fas fa-seedling me-2"></i>
+                                Crops
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="farmers.html">
+                                <i class="fas fa-users me-2"></i>
+                                Farmers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <i class="fas fa-cog me-2"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Top Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+                    <div class="container-fluid">
+                        <!-- Page Title -->
+                        <h2 class="navbar-brand mb-0 h1">Farmers Management</h2>
+                        
+                        <!-- Top Navbar Items -->
+                        <div class="d-flex align-items-center">
+                            <!-- Notifications -->
+                            <div class="dropdown me-3">
+                                <button class="btn btn-light position-relative" type="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                                    <li><a class="dropdown-item" href="#">New farmer registered</a></li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Logout -->
+                            <button class="btn btn-outline-danger" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Farmers Content -->
+                <div class="py-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h4 class="mb-0">Farmers</h4>
+                            <p class="text-muted mb-0">Manage farmer profiles and assignments</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i> Add Farmer
+                        </button>
+                    </div>
+                    
+                    <!-- Farmers Cards -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <div class="farmer-avatar mx-auto">
+                                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">John Smith</h5>
+                                    <p class="text-muted">
+                                        <i class="fas fa-phone me-2"></i>+1-555-0101
+                                    </p>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Farm Size</h6>
+                                            <p class="mb-0 fw-bold">120 acres</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Crops</h6>
+                                            <p class="mb-0 fw-bold">3</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary btn-sm me-2">View</button>
+                                        <button class="btn btn-outline-secondary btn-sm">Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <div class="farmer-avatar mx-auto">
+                                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Maria Garcia</h5>
+                                    <p class="text-muted">
+                                        <i class="fas fa-phone me-2"></i>+1-555-0102
+                                    </p>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Farm Size</h6>
+                                            <p class="mb-0 fw-bold">85 acres</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Crops</h6>
+                                            <p class="mb-0 fw-bold">2</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary btn-sm me-2">View</button>
+                                        <button class="btn btn-outline-secondary btn-sm">Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <div class="farmer-avatar mx-auto">
+                                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Robert Johnson</h5>
+                                    <p class="text-muted">
+                                        <i class="fas fa-phone me-2"></i>+1-555-0103
+                                    </p>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <h6 class="text-muted mb-1">Farm Size</h6>
+                                            <p class="mb-0 fw-bold">150 acres</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Crops</h6>
+                                            <p class="mb-0 fw-bold">4</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary btn-sm me-2">View</button>
+                                        <button class="btn btn-outline-secondary btn-sm">Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Farmers Table -->
+                    <div class="card border-0 shadow-sm mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">All Farmers</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Contact</th>
+                                            <th>Farm Size</th>
+                                            <th>Assigned Crops</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>John Smith</td>
+                                            <td>+1-555-0101</td>
+                                            <td>120 acres</td>
+                                            <td>Wheat, Corn</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Maria Garcia</td>
+                                            <td>+1-555-0102</td>
+                                            <td>85 acres</td>
+                                            <td>Rice, Tomatoes</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Robert Johnson</td>
+                                            <td>+1-555-0103</td>
+                                            <td>150 acres</td>
+                                            <td>Cotton, Sugarcane</td>
+                                            <td><span class="badge bg-warning">On Leave</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Sarah Williams</td>
+                                            <td>+1-555-0104</td>
+                                            <td>65 acres</td>
+                                            <td>Fruits, Vegetables</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                alert('Logged out successfully!');
+            }
+        }
+    </script>
+</body>
+</html>

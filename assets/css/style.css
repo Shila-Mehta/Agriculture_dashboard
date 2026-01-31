@@ -1,47 +1,31 @@
 /* Global Styles */
 :root {
-    --primary-color: #2e7d32;
-    --secondary-color: #4caf50;
-    --light-green: #c8e6c9;
+    --primary-green: #2e7d32;
+    --light-green: #4caf50;
     --dark-green: #1b5e20;
-    --sidebar-width: 250px;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
-    overflow-x: hidden;
 }
 
-/* Sidebar Styles */
-#sidebar {
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(180deg, var(--dark-green), var(--primary-green));
     min-height: 100vh;
-    background: linear-gradient(180deg, var(--dark-green), var(--primary-color));
     color: white;
-    transition: all 0.3s;
-    box-shadow: 3px 0 10px rgba(0,0,0,0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 1000;
-}
-
-#sidebar.collapsed {
-    margin-left: -250px;
+    padding-top: 20px;
 }
 
 .sidebar-header {
+    padding-bottom: 20px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.sidebar-header h4 {
-    color: white;
-    font-weight: 600;
-}
-
-.user-profile img {
-    border: 3px solid rgba(255,255,255,0.2);
+.user-profile {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .nav-link {
@@ -63,19 +47,6 @@ body {
     font-weight: 500;
 }
 
-/* Main Content */
-main {
-    padding-top: 20px;
-    transition: all 0.3s;
-}
-
-.navbar {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
 /* Dashboard Cards */
 .stat-card {
     border-radius: 12px;
@@ -89,7 +60,7 @@ main {
     transform: translateY(-5px);
 }
 
-.stat-card .card-icon {
+.card-icon {
     width: 60px;
     height: 60px;
     border-radius: 10px;
@@ -105,39 +76,15 @@ main {
 .card-icon.farmers { background-color: #ff9800; }
 .card-icon.yield { background-color: #9c27b0; }
 
-.stat-card h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 10px 0;
+/* Charts */
+canvas {
+    max-width: 100%;
+    height: auto;
 }
 
-/* Charts Container */
-.chart-container {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.chart-container h4 {
-    color: var(--dark-green);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-/* Table Styles */
-.table-container {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
+/* Table */
 .table th {
     background-color: #f8f9fa;
-    border-top: none;
     color: var(--dark-green);
     font-weight: 600;
 }
@@ -150,52 +97,25 @@ main {
     padding: 5px 10px;
     margin: 0 3px;
     border-radius: 6px;
+    font-size: 12px;
 }
 
-/* Search Box */
-.search-box {
-    max-width: 300px;
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
-/* Form Validation */
-.form-control.is-invalid {
-    border-color: #dc3545;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right calc(0.375em + 0.1875rem) center;
-    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-}
-
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    #sidebar {
-        position: fixed;
-        z-index: 1050;
-        margin-left: -250px;
+    .sidebar {
+        min-height: auto;
+        margin-bottom: 20px;
     }
     
-    #sidebar.show {
-        margin-left: 0;
-    }
-    
-    .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 1040;
-        display: none;
-    }
-    
-    .sidebar-overlay.show {
-        display: block;
-    }
-    
-    main {
-        padding-left: 15px;
-        padding-right: 15px;
+    .main-content {
+        padding: 15px;
     }
     
     .stat-card {
@@ -203,30 +123,30 @@ main {
     }
 }
 
-/* Loading Spinner */
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
+/* Farmer Avatar */
+.farmer-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
 }
 
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid var(--primary-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+/* Form Controls */
+.form-control:focus {
+    border-color: var(--light-green);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* Progress Bar */
+.progress {
+    height: 10px;
+    border-radius: 5px;
 }
 
-/* Notification Badge */
-.badge {
-    font-size: 0.7rem;
-    padding: 0.25em 0.6em;
+.progress-bar {
+    background-color: var(--primary-green);
+}
+
+/* Utilities */
+.cursor-pointer {
+    cursor: pointer;
 }
